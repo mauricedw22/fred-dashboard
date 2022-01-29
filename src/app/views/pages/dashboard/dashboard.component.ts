@@ -511,7 +511,7 @@ function getMonthlySalesChartOptions(obj: any) {
  */
  function getCloudStorageChartOptions(obj: any) {
   return {
-    series: [67],
+    series: [63],
     chart: {
       height: 260,
       type: "radialBar"
