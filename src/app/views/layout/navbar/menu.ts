@@ -18,11 +18,11 @@ export const MENU: MenuItem[] = [
           // },
           {
             label: 'US Federal Ratios',
-            link: '/apps/email/inbox'
+            link: '/charts-graphs/apexcharts'
           },
           {
             label: 'Consumer Ratios',
-            link: '/apps/email/read'
+            link: '/charts-graphs/apexcharts'
           },
           // {
           //   label: 'Compose',
