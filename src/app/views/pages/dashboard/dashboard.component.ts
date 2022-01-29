@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   public revenueChartOptions: any = {};
   public monthlySalesChartOptions: any = {};
   public cloudStorageChartOptions: any = {};
+  public lineChartOptions: any = {};
 
   // colors and font variables for apex chart 
   obj = {
@@ -53,6 +54,7 @@ export class DashboardComponent implements OnInit {
     this.revenueChartOptions = getRevenueChartOptions(this.obj);
     this.monthlySalesChartOptions = getMonthlySalesChartOptions(this.obj);
     this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
+    this.lineChartOptions = getLineChartOptions(this.obj);
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
     if (document.querySelector('html')?.getAttribute('dir') === 'rtl') {
@@ -553,5 +555,87 @@ function getMonthlySalesChartOptions(obj: any) {
       lineCap: "round",
     },
     labels: ["Storage Used"]
+  }
+};
+
+
+/**
+ * Line chart options
+ */
+ function getLineChartOptions(obj: any) {
+  return {
+    series: [
+      {
+        name: "Data a",
+        data: [45, 52, 38, 45]
+      },
+      {
+        name: "Data b",
+        data: [12, 42, 68, 33]
+      },
+      {
+        name:
+          "Data c",
+        data: [8, 32, 48, 53]
+      }
+    ],
+    chart: {
+      type: "line",
+      height: '320',
+      parentHeightOffset: 0,
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+    },
+    colors: [obj.primary, obj.danger, obj.warning],
+    grid: {
+      padding: {
+        bottom: -4
+      },
+      borderColor: obj.gridBorder,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      }
+    },
+    xaxis: {
+      type: "datetime",
+      categories: ["2015", "2016", "2017", "2018"],
+      lines: {
+        show: true
+      },
+      axisBorder: {
+        color: obj.gridBorder,
+      },
+      axisTicks: {
+        color: obj.gridBorder,
+      },
+    },
+    yaxis: {
+      labels: {
+        offsetX: 0
+      }
+    },
+    markers: {
+      size: 0,
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+    stroke: {
+      width: 3,
+      curve: "smooth",
+      lineCap: "round"
+    },
   }
 };
