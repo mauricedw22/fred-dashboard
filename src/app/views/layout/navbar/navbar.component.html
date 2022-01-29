@@ -315,12 +315,30 @@
         </ng-container>
 
 				<li class="nav-item">
-					<a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+					<a class="nav-link" (click)="openBasicModal(basicModal)">
 						<i class="link-icon" data-feather="hash"></i>
-						<span class="menu-title">Documentation</span></a>
+						<span class="menu-title">Documentation</span>
+          </a>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <ng-template #basicModal let-modal>
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" (click)="modal.close('by: close icon')" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.close('by: close button')">Close</button>
+                <button type="button" class="btn btn-primary" (click)="modal.close('by: save button')">Save changes</button>
+              </div>
+            </ng-template>
+            <!-- Close result
+            <p *ngIf="basicModalCloseResult != ''" class="mt-2">{{basicModalCloseResult}}</p> -->
+
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -338,7 +356,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 				</li>
 			</ul>
 		</div>

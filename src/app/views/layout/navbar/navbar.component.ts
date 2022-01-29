@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject, Renderer2, HostListener } from '@angular/core';
+import { Component, OnInit, Inject, Renderer2, HostListener, TemplateRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +15,8 @@ import { MenuItem } from './menu.model';
 export class NavbarComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
+
+  basicModalCloseResult: string = '';
 
   /**
   * Fixed header menu on scroll
@@ -31,8 +35,15 @@ export class NavbarComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
+
+    openBasicModal(content: TemplateRef<any>) {
+      this.modalService.open(content, {}).result.then((result) => {
+        this.basicModalCloseResult = "Modal closed" + result
+      }).catch((res) => {});
+    }
 
   ngOnInit(): void {
     this.menuItems = MENU;
