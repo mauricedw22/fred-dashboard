@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   public monthlySalesChartOptions: any = {};
   public cloudStorageChartOptions: any = {};
   public lineChartOptions: any = {};
+  public pieChartOptions: any = {};
+  public radarChartOptions: any = {};
 
   // colors and font variables for apex chart 
   obj = {
@@ -55,6 +57,8 @@ export class DashboardComponent implements OnInit {
     this.monthlySalesChartOptions = getMonthlySalesChartOptions(this.obj);
     this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
     this.lineChartOptions = getLineChartOptions(this.obj);
+    this.pieChartOptions = getPieChartOptions(this.obj);
+    this.radarChartOptions = getRadarChartOptions(this.obj);
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
     if (document.querySelector('html')?.getAttribute('dir') === 'rtl') {
@@ -637,5 +641,130 @@ function getMonthlySalesChartOptions(obj: any) {
       curve: "smooth",
       lineCap: "round"
     },
+  }
+};
+
+/**
+ * Pie chart options
+ */
+ function getPieChartOptions(obj: any) {
+  return {
+    series: [44, 55, 13, 33],
+    chart: {
+      height: 300,
+      type: "pie",
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+    },
+    colors: [obj.primary,obj.warning,obj.danger, obj.info],
+    stroke: {
+      colors: ['rgba(0,0,0,0)']
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+    dataLabels: {
+      enabled: false
+    }
+  }
+};
+
+
+/**
+ * Radar chart options
+ */
+function getRadarChartOptions(obj: any) {
+  return {
+    series: [
+      {
+        name: 'Series 1',
+        data: [80, 50, 30, 40, 100, 20],
+      }, {
+        name: 'Series 2',
+        data: [20, 30, 40, 80, 20, 80],
+      }, {
+        name: 'Series 3',
+        data: [44, 76, 78, 13, 43, 10],
+      }
+    ],
+    chart: {
+      height: 300,
+      type: 'radar',
+      parentHeightOffset: 0,
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+    },
+    colors: [obj.primary, obj.warning, obj.danger],
+    grid: {
+      padding: {
+        bottom: -6
+      }
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+    labels: ['2011', '2012', '2013', '2014', '2015', '2016'],
+    stroke: {
+      width: 0,
+    },
+    fill: {
+      opacity: 0.75
+    },
+    xaxis: {
+      categories: ['April', 'May', 'June', 'July', 'August', 'September'],
+      labels: {
+        show: true,
+        style: {
+          colors: [obj.secondary, obj.secondary, obj.secondary, obj.secondary, obj.secondary, obj.secondary],
+          fontSize: "14px",
+          fontFamily: obj.fontFamily
+        }
+      }
+    },
+    yaxis: {
+      labels: {
+        show: true,
+        style: {
+          colors: obj.bodyColor,
+          fontSize: "11px",
+          fontFamily: obj.fontFamily
+        }
+      }
+    },
+    markers: {
+      size: 0
+    },
+    plotOptions: {
+      radar: {
+        polygons: {
+          strokeColors: obj.gridBorder,
+          strokeWidth: 1,
+          connectorColors: obj.gridBorder,
+          fill: {
+              colors: ['transparent']
+          }
+        }
+      }
+    }
   }
 };

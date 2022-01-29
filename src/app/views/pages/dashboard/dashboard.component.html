@@ -334,7 +334,51 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+  <div class="row">
+    <div class="col-xl-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Pie chart</h6>
+  
+          <apx-chart
+            [series]="pieChartOptions.series"
+            [chart]="pieChartOptions.chart"
+            [colors]="pieChartOptions.colors"
+            [stroke]="pieChartOptions.stroke"
+            [legend]="pieChartOptions.legend"
+            [dataLabels]="pieChartOptions.dataLabels"
+          ></apx-chart>
+  
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Radar chart</h6>
+
+          <apx-chart
+            [series]="radarChartOptions.series"
+            [chart]="radarChartOptions.chart"
+            [colors]="radarChartOptions.colors"
+            [grid]="radarChartOptions.grid"
+            [legend]="radarChartOptions.legend"
+            [labels]="radarChartOptions.labels"
+            [stroke]="radarChartOptions.stroke"
+            [fill]="radarChartOptions.fill"
+            [xaxis]="radarChartOptions.xaxis"
+            [yaxis]="radarChartOptions.yaxis"
+            [markers]="radarChartOptions.markers"
+            [plotOptions]="radarChartOptions.plotOptions"
+          ></apx-chart>
+
+        </div>
+      </div>
+    </div>
+</div>
 
 <!-- <div class="row">
   <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
