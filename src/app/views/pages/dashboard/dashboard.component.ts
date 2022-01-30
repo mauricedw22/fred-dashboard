@@ -65,6 +65,39 @@ export class DashboardComponent implements OnInit {
       this.addRtlOptions();
     }
 
+    //
+    let totalFees_array: Array<any> = [];
+    let size_array: Array<any> = [];
+
+    // let txn_data: Object = {};
+
+    async function prepare_array() {
+      // let arr1 = [];
+
+      const response = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
+      const body = await response.text();
+      const info = JSON.parse(body);
+      console.log(info.blocks)
+
+      for(let i=info.blocks-100;i<info.blocks;i++){
+        const block_response = await fetch('https://api.whatsonchain.com/v1/bsv/main/block/height/' + String(i));
+        const resbody = await block_response.text();
+        const resp = JSON.parse(resbody);
+
+        let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "totalFees": resp.totalFees, "txcount": resp.txcount}
+
+        totalFees_array.push(obj.totalFees)
+        size_array.push(obj.size)
+
+      }
+
+      console.log(size_array);
+      console.log(totalFees_array);
+      // return block_array;
+    };
+
+    prepare_array();
+
   }
 
 
