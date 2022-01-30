@@ -66,15 +66,15 @@ export class DashboardComponent implements OnInit {
     }
 
     //
-    let totalFees_array: Array<any> = [];
-    let size_array: Array<any> = [];
+    let gold_array: Array<any> = [];
+    let dates_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
     async function prepare_array() {
       // let arr1 = [];
 
-      const response = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info');
+      const response = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info'); // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=WPU081&file_type=json&observation_start=1985-06-01
       const body = await response.text();
       const info = JSON.parse(body);
       console.log(info.blocks)
@@ -84,15 +84,15 @@ export class DashboardComponent implements OnInit {
         const resbody = await block_response.text();
         const resp = JSON.parse(resbody);
 
-        let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "totalFees": resp.totalFees, "txcount": resp.txcount}
+        let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "gold": resp.gold, "txcount": resp.txcount}
 
-        totalFees_array.push(obj.totalFees)
-        size_array.push(obj.size)
+        gold_array.push(obj.gold)
+        dates_array.push(obj.size)
 
       }
 
-      console.log(size_array);
-      console.log(totalFees_array);
+      console.log(dates_array);
+      console.log(gold_array);
       // return block_array;
     };
 
