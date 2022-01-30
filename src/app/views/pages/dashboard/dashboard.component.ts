@@ -74,26 +74,25 @@ export class DashboardComponent implements OnInit {
     async function prepare_array() {
       // let arr1 = [];
 
-      const response = await fetch('https://api.whatsonchain.com/v1/bsv/main/chain/info'); // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=WPU081&file_type=json&observation_start=1985-06-01
+      const response = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=WPU081&file_type=json&observation_start=1985-06-01');
       const body = await response.text();
       const info = JSON.parse(body);
-      console.log(info.blocks)
+      console.log(info)
 
-      for(let i=info.blocks-100;i<info.blocks;i++){
-        const block_response = await fetch('https://api.whatsonchain.com/v1/bsv/main/block/height/' + String(i));
-        const resbody = await block_response.text();
-        const resp = JSON.parse(resbody);
+      // for(let i=info.blocks-100;i<info.blocks;i++){
+      //   const block_response = await fetch('https://api.whatsonchain.com/v1/bsv/main/block/height/' + String(i));
+      //   const resbody = await block_response.text();
+      //   const resp = JSON.parse(resbody);
 
-        let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "gold": resp.gold, "txcount": resp.txcount}
+      //   let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "gold": resp.gold, "txcount": resp.txcount}
 
-        gold_array.push(obj.gold)
-        dates_array.push(obj.size)
+      //   gold_array.push(obj.gold)
+      //   dates_array.push(obj.size)
 
-      }
+      // }
 
       console.log(dates_array);
       console.log(gold_array);
-      // return block_array;
     };
 
     prepare_array();
