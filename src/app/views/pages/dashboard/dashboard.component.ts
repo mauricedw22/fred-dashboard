@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   public ordersChartOptions: any = {};
   public growthChartOptions: any = {};
   public goldPpiChartOptions: any = {};
-  // public monthlySalesChartOptions: any = {};
+  public reservesChartOptions: any = {};
   // public cloudStorageChartOptions: any = {};
   public lineChartOptions: any = {};
   public pieChartOptions: any = {};
@@ -53,12 +53,13 @@ export class DashboardComponent implements OnInit {
     // this.customersChartOptions = getCustomerseChartOptions(this.obj);
     // this.ordersChartOptions = getOrdersChartOptions(this.obj);
     // this.growthChartOptions = getGrowthChartOptions(this.obj)    
-    // this.monthlySalesChartOptions = getMonthlySalesChartOptions(this.obj);
+    
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
 
     this.lineChartOptions = getLineChartOptions(this.obj);
     this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
+    this.reservesChartOptions = getReservesChartOptions(this.obj);
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
     if (document.querySelector('html')?.getAttribute('dir') === 'rtl') {
@@ -87,23 +88,6 @@ export class DashboardComponent implements OnInit {
       console.log(gold_array)
       console.log(dates_array)
 
-      // const response2 = await fetch('../../assets/data/au-prices-1968-012922.json');
-      // const body2 = await response2.text();
-      // const info2 = JSON.parse(body2);
-      // console.log(info2)
-
-      // for(let i=info.blocks-100;i<info.blocks;i++){
-      //   const block_response = await fetch('https://api.whatsonchain.com/v1/bsv/main/block/height/' + String(i));
-      //   const resbody = await block_response.text();
-      //   const resp = JSON.parse(resbody);
-
-      //   let obj = {"height": resp.height, "size": resp.size, "time": resp.time, "gold": resp.gold, "txcount": resp.txcount}
-
-      //   gold_array.push(obj.gold)
-      //   dates_array.push(obj.size)
-
-      // }
-
     };
 
     prepare_array();
@@ -125,9 +109,9 @@ export class DashboardComponent implements OnInit {
     this.goldPpiChartOptions.yaxis.labels.offsetX = -25;
     this.goldPpiChartOptions.yaxis.title.offsetX = -75;
 
-    //  Monthly sales chart
-    // this.monthlySalesChartOptions.yaxis.labels.offsetX = -10;
-    // this.monthlySalesChartOptions.yaxis.title.offsetX = -70;
+    // Total Reserves chart
+    this.reservesChartOptions.yaxis.labels.offsetX = -10;
+    this.reservesChartOptions.yaxis.title.offsetX = -70;
   }
 }
 
@@ -315,7 +299,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Monthly sales chart options
  */
-function getMonthlySalesChartOptions(obj: any) {
+function getReservesChartOptions(obj: any) {
   return {
     series: [{
       name: 'Sales',
@@ -404,55 +388,55 @@ function getMonthlySalesChartOptions(obj: any) {
 
 
 
-/**
- * Cloud storage chart options
- */
- function getCloudStorageChartOptions(obj: any) {
-  return {
-    series: [63],
-    chart: {
-      height: 260,
-      type: "radialBar"
-    },
-    colors: [obj.primary],
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          margin: 15,
-          size: "70%"
-        },
-        track: {
-          show: true,
-          background: obj.dark,
-          strokeWidth: '100%',
-          opacity: 1,
-          margin: 5, 
-        },
-        dataLabels: {
-          showOn: "always",
-          name: {
-            offsetY: -11,
-            show: true,
-            color: obj.muted,
-            fontSize: "13px"
-          },
-          value: {
-            color: obj.bodyColor,
-            fontSize: "30px",
-            show: true
-          }
-        }
-      }
-    },
-    fill: {
-      opacity: 1
-    },
-    stroke: {
-      lineCap: "round",
-    },
-    labels: ["Storage Used"]
-  }
-};
+// /**
+//  * Cloud storage chart options
+//  */
+//  function getCloudStorageChartOptions(obj: any) {
+//   return {
+//     series: [63],
+//     chart: {
+//       height: 260,
+//       type: "radialBar"
+//     },
+//     colors: [obj.primary],
+//     plotOptions: {
+//       radialBar: {
+//         hollow: {
+//           margin: 15,
+//           size: "70%"
+//         },
+//         track: {
+//           show: true,
+//           background: obj.dark,
+//           strokeWidth: '100%',
+//           opacity: 1,
+//           margin: 5, 
+//         },
+//         dataLabels: {
+//           showOn: "always",
+//           name: {
+//             offsetY: -11,
+//             show: true,
+//             color: obj.muted,
+//             fontSize: "13px"
+//           },
+//           value: {
+//             color: obj.bodyColor,
+//             fontSize: "30px",
+//             show: true
+//           }
+//         }
+//       }
+//     },
+//     fill: {
+//       opacity: 1
+//     },
+//     stroke: {
+//       lineCap: "round",
+//     },
+//     labels: ["Storage Used"]
+//   }
+// };
 
 
 /**
