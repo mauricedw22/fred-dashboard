@@ -76,22 +76,22 @@ export class DashboardComponent implements OnInit {
       const response = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=PCU2122212122210&file_type=json&observation_start=1985-06-01&observation_end=2022-01-28');
       const body = await response.text();
       const info = JSON.parse(body);
-      console.log(info)
+      console.log(info.observations)
+
+      for(let i=0;i<info.observations.length;i++){
+
+          gold_array.push(info.observations[i].value)
+          dates_array.push(info.observations[i].date)
+  
+      }
+
+      console.log(gold_array)
+      console.log(dates_array)
 
       // const response2 = await fetch('../../assets/data/au-prices-1968-012922.json');
       // const body2 = await response2.text();
       // const info2 = JSON.parse(body2);
       // console.log(info2)
-
-      // for(let i=0;i<info2.length;i++){
-
-      //   gold_array.push(info2[i].gold_price)
-      //   dates_array.push(info2[i].date)
-
-      // }
-
-      // console.log(gold_array)
-      // console.log(dates_array)
 
       // for(let i=info.blocks-100;i<info.blocks;i++){
       //   const block_response = await fetch('https://api.whatsonchain.com/v1/bsv/main/block/height/' + String(i));
@@ -105,8 +105,6 @@ export class DashboardComponent implements OnInit {
 
       // }
 
-      // console.log(dates_array);
-      // console.log(gold_array);
     };
 
     prepare_array();
