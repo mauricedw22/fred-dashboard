@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
     this.lineChartOptions = getLineChartOptions(this.obj);
     this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
-    this.reservesChartOptions = getReservesChartOptions(this.obj);
+    
 
     // Some RTL fixes. (feel free to remove if you are using LTR))
     if (document.querySelector('html')?.getAttribute('dir') === 'rtl') {
@@ -68,6 +68,8 @@ export class DashboardComponent implements OnInit {
 
     let gold_array: Array<any> = [];
     let dates_array: Array<any> = [];
+    let dates_bargraph_array: Array<any> = [];
+    let us_reserves_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -85,8 +87,22 @@ export class DashboardComponent implements OnInit {
   
       }
 
-      console.log(gold_array)
-      console.log(dates_array)
+      const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
+      const body2 = await response2.text();
+      const info2 = JSON.parse(body2);
+      console.log(info2.observations)
+
+      for(let i=0;i<info2.observations.length;i++){
+
+          us_reserves_array.push(info2.observations[i].value)
+          dates_bargraph_array.push(info2.observations[i].date)
+  
+      }
+
+      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01
+
+      console.log(us_reserves_array)
+      console.log(dates_bargraph_array)
 
     };
 
@@ -94,7 +110,8 @@ export class DashboardComponent implements OnInit {
 
     setTimeout(() => {
 
-      this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);      
+      this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
+      this.reservesChartOptions = getReservesChartOptions(this.obj);  
 
     }, 3000);
 
@@ -302,7 +319,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 function getReservesChartOptions(obj: any) {
   return {
     series: [{
-      name: 'Sales',
+      name: 'Dollars',
       data: [152,109,93,113,126,161,188,143,102,113,116,124]
     }],
     chart: {
