@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      this.reservesChartOptions = getReservesChartOptions(this.obj);  
+      this.reservesChartOptions = getReservesChartOptions(this.obj, us_reserves_array, dates_bargraph_array);  
 
     }, 3000);
 
