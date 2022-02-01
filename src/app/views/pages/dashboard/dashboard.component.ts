@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, countries_array);  
 
-    }, 3000);
+    }, 2000);
 
    }
 
