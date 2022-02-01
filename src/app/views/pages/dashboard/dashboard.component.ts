@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
     let gold_array: Array<any> = [];
     let dates_array: Array<any> = [];
 
-    // let dates_bargraph_array: Array<any> = [];
+    let dates_bargraph_array: Array<any> = [];
     let reserves_array: Array<any> = [];
     let countries_array: Array<any> = ['USA'];
 
@@ -92,14 +92,23 @@ export class DashboardComponent implements OnInit {
       const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
       const body2 = await response2.text();
       const info2 = JSON.parse(body2);
-      console.log(info2.observations)
+      // console.log(info2.observations)
 
       reserves_array.push(info2.observations[info2.observations.length-1].value)
-      // dates_bargraph_array.push(info2.observations[info2.observations.length-1].date)
+      dates_bargraph_array.push(info2.observations[info2.observations.length-1].date)
+
+      const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
+      const body3 = await response3.text();
+      const info3 = JSON.parse(body3);
+      // console.log(info3.observations)
+
+      reserves_array.push(info3.observations[info3.observations.length-1].value)
+      dates_bargraph_array.push(info3.observations[info3.observations.length-1].date)
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01
 
       console.log(reserves_array)
+      console.log(dates_bargraph_array)
 
     };
 
@@ -108,9 +117,9 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, countries_array);  
+      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, dates_bargraph_array);  
 
-    }, 2000);
+    }, 4000);
 
    }
 
@@ -356,7 +365,7 @@ function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
     },
     yaxis: {
       title: {
-        text: 'Number of Sales',
+        text: 'Dollars',
         style:{
           size: 9,
           color: obj.muted
