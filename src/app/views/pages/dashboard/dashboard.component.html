@@ -294,7 +294,7 @@
 </div> row -->
 
 <div class="row">
-    <div class="col-xl-6 grid-margin stretch-card">
+    <!-- <div class="col-xl-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-baseline mb-2">
@@ -327,6 +327,27 @@
             [plotOptions]="reservesChartOptions.plotOptions"
           ></apx-chart>
         </div> 
+      </div>
+    </div> -->
+
+    <div class="col-xl-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Total Reserves (excluding Gold)</h6>
+
+          <apx-chart
+            [series]="lineChartOptions.series"
+            [chart]="lineChartOptions.chart"
+            [colors]="lineChartOptions.colors"
+            [grid]="lineChartOptions.grid"
+            [xaxis]="lineChartOptions.xaxis"
+            [yaxis]="lineChartOptions.yaxis"
+            [markers]="lineChartOptions.markers"
+            [legend]="lineChartOptions.legend"
+            [stroke]="lineChartOptions.stroke"
+          ></apx-chart>
+
+        </div>
       </div>
     </div>
 
