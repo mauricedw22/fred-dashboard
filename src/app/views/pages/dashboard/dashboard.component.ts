@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
 
-    this.lineChartOptions = getLineChartOptions(this.obj);
+    // this.lineChartOptions = getLineChartOptions(this.obj);
     this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
     
@@ -91,19 +91,24 @@ export class DashboardComponent implements OnInit {
 
       const response2 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGUSM052N&file_type=json&observation_end=2022-01-01');
       const body2 = await response2.text();
-      const info2 = JSON.parse(body2);
-      // console.log(info2.observations)
+      const us_res_info = JSON.parse(body2);
 
-      reserves_array.push(info2.observations[info2.observations.length-1].value)
-      dates_bargraph_array.push(info2.observations[info2.observations.length-1].date)
+      for(let i=0;i<us_res_info.observations.length;i++){
 
-      const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
-      const body3 = await response3.text();
-      const info3 = JSON.parse(body3);
-      // console.log(info3.observations)
+        reserves_array.push(us_res_info.observations[i].value)
+        dates_bargraph_array.push(us_res_info.observations[i].date)
 
-      reserves_array.push(info3.observations[info3.observations.length-1].value)
-      dates_bargraph_array.push(info3.observations[info3.observations.length-1].date)
+      }
+
+      // reserves_array.push(info2.observations[info2.observations.length-1].value)
+      
+
+      // const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
+      // const body3 = await response3.text();
+      // const info3 = JSON.parse(body3);
+
+      // reserves_array.push(info3.observations[info3.observations.length-1].value)
+      // dates_bargraph_array.push(info3.observations[info3.observations.length-1].date)
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01
 
@@ -322,92 +327,92 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Monthly sales chart options
  */
-function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
-  return {
-    series: [{
-      name: 'Dollars',
-      data: yArr
-    }],
-    chart: {
-      type: 'bar',
-      height: '318',
-      parentHeightOffset: 0,
-      foreColor: obj.bodyColor,
-      background: obj.cardBg,
-      toolbar: {
-        show: false
-      },
-    },
-    colors: [obj.primary],  
-    fill: {
-      opacity: .9
-    } , 
-    grid: {
-      padding: {
-        bottom: -4
-      },
-      borderColor: obj.gridBorder,
-      xaxis: {
-        lines: {
-          show: true
-        }
-      }
-    },
-    xaxis: {
-      type: 'datetime',
-      categories: xArr, // ['01/01/2022','02/01/2022','03/01/2022','04/01/2022','05/01/2022','06/01/2022','07/01/2022', '08/01/2022','09/01/2022','10/01/2022', '11/01/2022', '12/01/2022'],
-      axisBorder: {
-        color: obj.gridBorder,
-      },
-      axisTicks: {
-        color: obj.gridBorder,
-      },
-    },
-    yaxis: {
-      title: {
-        text: 'Dollars',
-        style:{
-          size: 9,
-          color: obj.muted
-        }
-      },
-      labels: {
-        offsetX: 0,
-      },
-    },
-    legend: {
-      show: true,
-      position: "top",
-      horizontalAlign: 'center',
-      fontFamily: obj.fontFamily,
-      itemMargin: {
-        horizontal: 8,
-        vertical: 0
-      },
-    },
-    stroke: {
-      width: 0
-    },
-    dataLabels: {
-      enabled: true,
-      style: {
-        fontSize: '10px',
-        fontFamily: obj.fontFamily,
-      },
-      offsetY: -27
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: "50%",
-        borderRadius: 4,
-        dataLabels: {
-          position: 'top',
-          orientation: 'vertical',
-        }
-      },
-    }
-  }
-}
+// function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
+//   return {
+//     series: [{
+//       name: 'Dollars',
+//       data: yArr
+//     }],
+//     chart: {
+//       type: 'bar',
+//       height: '318',
+//       parentHeightOffset: 0,
+//       foreColor: obj.bodyColor,
+//       background: obj.cardBg,
+//       toolbar: {
+//         show: false
+//       },
+//     },
+//     colors: [obj.primary],  
+//     fill: {
+//       opacity: .9
+//     } , 
+//     grid: {
+//       padding: {
+//         bottom: -4
+//       },
+//       borderColor: obj.gridBorder,
+//       xaxis: {
+//         lines: {
+//           show: true
+//         }
+//       }
+//     },
+//     xaxis: {
+//       type: 'datetime',
+//       categories: xArr, // ['01/01/2022','02/01/2022','03/01/2022','04/01/2022','05/01/2022','06/01/2022','07/01/2022', '08/01/2022','09/01/2022','10/01/2022', '11/01/2022', '12/01/2022'],
+//       axisBorder: {
+//         color: obj.gridBorder,
+//       },
+//       axisTicks: {
+//         color: obj.gridBorder,
+//       },
+//     },
+//     yaxis: {
+//       title: {
+//         text: 'Dollars',
+//         style:{
+//           size: 9,
+//           color: obj.muted
+//         }
+//       },
+//       labels: {
+//         offsetX: 0,
+//       },
+//     },
+//     legend: {
+//       show: true,
+//       position: "top",
+//       horizontalAlign: 'center',
+//       fontFamily: obj.fontFamily,
+//       itemMargin: {
+//         horizontal: 8,
+//         vertical: 0
+//       },
+//     },
+//     stroke: {
+//       width: 0
+//     },
+//     dataLabels: {
+//       enabled: true,
+//       style: {
+//         fontSize: '10px',
+//         fontFamily: obj.fontFamily,
+//       },
+//       offsetY: -27
+//     },
+//     plotOptions: {
+//       bar: {
+//         columnWidth: "50%",
+//         borderRadius: 4,
+//         dataLabels: {
+//           position: 'top',
+//           orientation: 'vertical',
+//         }
+//       },
+//     }
+//   }
+// }
 
 
 
@@ -465,22 +470,22 @@ function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Line chart options
  */
- function getLineChartOptions(obj: any) {
+ function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
   return {
     series: [
       {
         name: "Data a",
-        data: [45, 52, 38, 45]
+        data: yArr, // [45, 52, 38, 45]
       },
-      {
-        name: "Data b",
-        data: [12, 42, 68, 33]
-      },
-      {
-        name:
-          "Data c",
-        data: [8, 32, 48, 53]
-      }
+      // {
+      //   name: "Data b",
+      //   data: [12, 42, 68, 33]
+      // },
+      // {
+      //   name:
+      //     "Data c",
+      //   data: [8, 32, 48, 53]
+      // }
     ],
     chart: {
       type: "line",
@@ -506,7 +511,7 @@ function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
     },
     xaxis: {
       type: "datetime",
-      categories: ["2015", "2016", "2017", "2018"],
+      categories: xArr, // ["2015", "2016", "2017", "2018"],
       lines: {
         show: true
       },

@@ -208,143 +208,22 @@
   </div>
 </div> <!-- row -->
 
-<!-- <div class="row">
-  <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-baseline mb-2">
-          <h6 class="card-title mb-0">Monthly sales</h6>
-          <div ngbDropdown class="mb-2">
-            <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton4">
-              <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownMenuButton4">
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="trash" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="printer" appFeatherIcon class="icon-sm me-2"></i> <span class="">Print</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="download" appFeatherIcon class="icon-sm me-2"></i> <span class="">Download</span></a>
-            </div>
-          </div>
-        </div>
-        <p class="text-muted">Sales are activities related to selling or the number of goods or services sold in a given time period.</p>
-        <apx-chart
-          [series]="monthlySalesChartOptions.series"
-          [chart]="monthlySalesChartOptions.chart"
-          [colors]="monthlySalesChartOptions.colors"
-          [fill]="monthlySalesChartOptions.fill"
-          [grid]="monthlySalesChartOptions.grid"
-          [xaxis]="monthlySalesChartOptions.xaxis"
-          [yaxis]="monthlySalesChartOptions.yaxis"
-          [legend]="monthlySalesChartOptions.legend"
-          [stroke]="monthlySalesChartOptions.stroke"
-          [dataLabels]="monthlySalesChartOptions.dataLabels"
-          [plotOptions]="monthlySalesChartOptions.plotOptions"
-        ></apx-chart>
-      </div> 
-    </div>
-  </div>
-  <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-baseline mb-2">
-          <h6 class="card-title mb-0">Cloud storage</h6>
-          <div ngbDropdown class="mb-2">
-            <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton5">
-              <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownMenuButton5">
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="trash" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="printer" appFeatherIcon class="icon-sm me-2"></i> <span class="">Print</span></a>
-              <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="download" appFeatherIcon class="icon-sm me-2"></i> <span class="">Download</span></a>
-            </div>
-          </div>
-        </div>
-        <apx-chart
-          [series]="cloudStorageChartOptions.series"
-          [chart]="cloudStorageChartOptions.chart"
-          [colors]="cloudStorageChartOptions.colors"
-          [plotOptions]="cloudStorageChartOptions.plotOptions"
-          [fill]="cloudStorageChartOptions.fill"
-          [stroke]="cloudStorageChartOptions.stroke"
-          [labels]="cloudStorageChartOptions.labels"
-        ></apx-chart>
-        <div class="row mb-3">
-          <div class="col-6 d-flex justify-content-end">
-            <div>
-              <label class="d-flex align-items-center justify-content-end tx-10 text-uppercase fw-bold">Total storage <span class="p-1 ms-1 rounded-circle bg-secondary"></span></label>
-              <h5 class="fw-bolder mb-0 text-end">8TB</h5>
-            </div>
-          </div>
-          <div class="col-6">
-            <div>
-              <label class="d-flex align-items-center tx-10 text-uppercase fw-bold"><span class="p-1 me-1 rounded-circle bg-primary"></span> Used storage</label>
-              <h5 class="fw-bolder mb-0">~5TB</h5>
-            </div>
-          </div>
-        </div>
-        <div class="d-grid">
-          <button class="btn btn-primary">Upgrade storage</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> row -->
-
 <div class="row">
-    <!-- <div class="col-xl-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-baseline mb-2">
-            <h6 class="card-title mb-0">Total Reserves by Country (excluding Gold)</h6>
-            <div ngbDropdown class="mb-2">
-              <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton4">
-                <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownMenuButton4">
-                <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-                <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="trash" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="printer" appFeatherIcon class="icon-sm me-2"></i> <span class="">Print</span></a>
-                <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="download" appFeatherIcon class="icon-sm me-2"></i> <span class="">Download</span></a>
-              </div>
-            </div>
-          </div>
-          <p class="text-muted">Sales are activities related to selling or the number of goods or services sold in a given time period.</p>
-          <apx-chart
-            [series]="reservesChartOptions.series"
-            [chart]="reservesChartOptions.chart"
-            [colors]="reservesChartOptions.colors"
-            [fill]="reservesChartOptions.fill"
-            [grid]="reservesChartOptions.grid"
-            [xaxis]="reservesChartOptions.xaxis"
-            [yaxis]="reservesChartOptions.yaxis"
-            [legend]="reservesChartOptions.legend"
-            [stroke]="reservesChartOptions.stroke"
-            [dataLabels]="reservesChartOptions.dataLabels"
-            [plotOptions]="reservesChartOptions.plotOptions"
-          ></apx-chart>
-        </div> 
-      </div>
-    </div> -->
-
     <div class="col-xl-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h6 class="card-title">Total Reserves (excluding Gold)</h6>
 
           <apx-chart
-            [series]="lineChartOptions.series"
-            [chart]="lineChartOptions.chart"
-            [colors]="lineChartOptions.colors"
-            [grid]="lineChartOptions.grid"
-            [xaxis]="lineChartOptions.xaxis"
-            [yaxis]="lineChartOptions.yaxis"
-            [markers]="lineChartOptions.markers"
-            [legend]="lineChartOptions.legend"
-            [stroke]="lineChartOptions.stroke"
+            [series]="reservesChartOptions.series"
+            [chart]="reservesChartOptions.chart"
+            [colors]="reservesChartOptions.colors"
+            [grid]="reservesChartOptions.grid"
+            [xaxis]="reservesChartOptions.xaxis"
+            [yaxis]="reservesChartOptions.yaxis"
+            [markers]="reservesChartOptions.markers"
+            [legend]="reservesChartOptions.legend"
+            [stroke]="reservesChartOptions.stroke"
           ></apx-chart>
 
         </div>
