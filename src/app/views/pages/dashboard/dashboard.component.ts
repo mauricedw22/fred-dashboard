@@ -93,10 +93,10 @@ export class DashboardComponent implements OnInit {
       const body2 = await response2.text();
       const us_res_info = JSON.parse(body2);
 
-      for(let i=0;i<us_res_info.observations.length;i++){
+      for(let i=us_res_info.observations.length-144;i<us_res_info.observations.length;i=i+12){
 
         reserves_array.push(us_res_info.observations[i].value)
-        dates_bargraph_array.push(us_res_info.observations[i].date)
+        dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
 
       }
 
