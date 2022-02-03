@@ -72,6 +72,7 @@ export class DashboardComponent implements OnInit {
     let dates_bargraph_array: Array<any> = [];
     let reserves_array: Array<any> = [];
     let turkey_reserves_array: Array<any> = [];
+    let germany_reserves_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -110,6 +111,16 @@ export class DashboardComponent implements OnInit {
       for(let i=turkey_res_info.observations.length-144;i<turkey_res_info.observations.length;i=i+12){
 
         turkey_reserves_array.push(turkey_res_info.observations[i].value)
+
+      }
+
+      const response4 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
+      const body4 = await response4.text();
+      const germany_res_info = JSON.parse(body4);
+
+      for(let i=germany_res_info.observations.length-144;i<germany_res_info.observations.length;i=i+12){
+
+        germany_reserves_array.push(germany_res_info.observations[i].value)
 
       }
 
