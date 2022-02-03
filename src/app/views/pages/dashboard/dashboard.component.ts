@@ -110,7 +110,6 @@ export class DashboardComponent implements OnInit {
       for(let i=turkey_res_info.observations.length-144;i<turkey_res_info.observations.length;i=i+12){
 
         turkey_reserves_array.push(turkey_res_info.observations[i].value)
-        // dates_bargraph_array.push((turkey_res_info.observations[i].date).substring(0,4))
 
       }
 
