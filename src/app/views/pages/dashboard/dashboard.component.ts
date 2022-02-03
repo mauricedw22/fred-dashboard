@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, dates_bargraph_array);  
+      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, dates_bargraph_array);  
 
     }, 4000);
 
@@ -475,17 +475,17 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Line chart options
  */
- function getReservesChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
+ function getReservesChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, xArr: Array<any>) {
   return {
     series: [
       {
-        name: "Data a",
+        name: "USA",
         data: yArr, // [45, 52, 38, 45]
       },
-      // {
-      //   name: "Data b",
-      //   data: [12, 42, 68, 33]
-      // },
+      {
+        name: "Turkey",
+        data: y1Arr,// [12, 42, 68, 33]
+      },
       // {
       //   name:
       //     "Data c",
