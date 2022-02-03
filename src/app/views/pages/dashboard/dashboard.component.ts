@@ -114,7 +114,7 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      const response4 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
+      const response4 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGDEM052N&file_type=json&observation_end=2022-01-01');
       const body4 = await response4.text();
       const germany_res_info = JSON.parse(body4);
 
