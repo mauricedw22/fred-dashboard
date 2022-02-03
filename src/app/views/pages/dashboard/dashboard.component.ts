@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
 
     let dates_bargraph_array: Array<any> = [];
     let reserves_array: Array<any> = [];
-    let countries_array: Array<any> = ['USA'];
+    let turkey_reserves_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -103,17 +103,25 @@ export class DashboardComponent implements OnInit {
       // reserves_array.push(info2.observations[info2.observations.length-1].value)
       
 
-      // const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
-      // const body3 = await response3.text();
-      // const info3 = JSON.parse(body3);
+      const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
+      const body3 = await response3.text();
+      const turkey_res_info = JSON.parse(body3);
 
-      // reserves_array.push(info3.observations[info3.observations.length-1].value)
-      // dates_bargraph_array.push(info3.observations[info3.observations.length-1].date)
+      for(let i=turkey_res_info.observations.length-144;i<turkey_res_info.observations.length;i=i+12){
+
+        reserves_array.push(turkey_res_info.observations[i].value)
+        dates_bargraph_array.push((turkey_res_info.observations[i].date).substring(0,4))
+
+      }
+
+      turkey_reserves_array.push(turkey_res_info.observations[turkey_res_info.observations.length-1].value)
+      dates_bargraph_array.push(turkey_res_info.observations[turkey_res_info.observations.length-1].date)
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01
 
       console.log(reserves_array)
       console.log(dates_bargraph_array)
+      console.log(reserves_array)
 
     };
 
