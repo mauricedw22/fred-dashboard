@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01
+      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGDEM052N&file_type=json&observation_end=2022-01-01
 
       console.log(reserves_array)
       console.log(dates_bargraph_array)
