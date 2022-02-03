@@ -109,19 +109,16 @@ export class DashboardComponent implements OnInit {
 
       for(let i=turkey_res_info.observations.length-144;i<turkey_res_info.observations.length;i=i+12){
 
-        reserves_array.push(turkey_res_info.observations[i].value)
-        dates_bargraph_array.push((turkey_res_info.observations[i].date).substring(0,4))
+        turkey_reserves_array.push(turkey_res_info.observations[i].value)
+        // dates_bargraph_array.push((turkey_res_info.observations[i].date).substring(0,4))
 
       }
-
-      turkey_reserves_array.push(turkey_res_info.observations[turkey_res_info.observations.length-1].value)
-      dates_bargraph_array.push(turkey_res_info.observations[turkey_res_info.observations.length-1].date)
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01
 
       console.log(reserves_array)
       console.log(dates_bargraph_array)
-      console.log(reserves_array)
+      console.log(turkey_reserves_array)
 
     };
 
