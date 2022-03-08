@@ -175,9 +175,9 @@ export class DashboardComponent implements OnInit {
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGJPM052N&file_type=json&observation_end=2022-01-01
 
-      console.log(spVix_array)
-      console.log(russellVix_array)
-      console.log(vix_dates_array)      
+      // console.log(spVix_array)
+      // console.log(russellVix_array)
+      // console.log(vix_dates_array)      
 
     };
 
@@ -187,7 +187,7 @@ export class DashboardComponent implements OnInit {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
-      // this.vixChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array)  
+      this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array)  
 
     }, 4000);
 
@@ -570,6 +570,82 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
       },
     },
     colors: [obj.primary, obj.danger, obj.warning, obj.info, '#ffffff'],
+    grid: {
+      padding: {
+        bottom: -4
+      },
+      borderColor: obj.gridBorder,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      }
+    },
+    xaxis: {
+      type: "datetime",
+      categories: xArr, // ["2015", "2016", "2017", "2018"],
+      lines: {
+        show: true
+      },
+      axisBorder: {
+        color: obj.gridBorder,
+      },
+      axisTicks: {
+        color: obj.gridBorder,
+      },
+    },
+    yaxis: {
+      labels: {
+        offsetX: 0
+      }
+    },
+    markers: {
+      size: 0,
+    },
+    legend: {
+      show: true,
+      position: "top",
+      horizontalAlign: 'center',
+      fontFamily: obj.fontFamily,
+      itemMargin: {
+        horizontal: 8,
+        vertical: 0
+      },
+    },
+    stroke: {
+      width: 3,
+      curve: "smooth",
+      lineCap: "round"
+    },
+  }
+};
+
+/**
+ * Line chart options
+ */
+ function getVixChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, xArr: Array<any>) {
+  return {
+    series: [
+      {
+        name: "SP 500 Volatility Index",
+        data: yArr, // [45, 52, 38, 45]
+      },
+      {
+        name: "Russell 2000 Volatility Index",
+        data: y1Arr,// [12, 42, 68, 33]
+      },
+    ],
+    chart: {
+      type: "line",
+      height: '320',
+      parentHeightOffset: 0,
+      foreColor: obj.bodyColor,
+      background: obj.cardBg,
+      toolbar: {
+        show: false
+      },
+    },
+    colors: [obj.primary, obj.danger],
     grid: {
       padding: {
         bottom: -4
