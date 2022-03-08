@@ -81,6 +81,10 @@ export class DashboardComponent implements OnInit {
     let uk_reserves_array: Array<any> = [];
     let india_reserves_array: Array<any> = [];
 
+    let spVix_array: Array<any> = [];
+    let russellVix_array: Array<any> = [];
+    let vix_dates_array: Array<any> = [];
+
     // let txn_data: Object = {};
 
     async function prepare_array() {
@@ -153,7 +157,7 @@ export class DashboardComponent implements OnInit {
 
       for(let i=spVix_res_info.observations.length-144;i<spVix_res_info.observations.length;i=i+12){
 
-        india_reserves_array.push(india_res_info.observations[i].value)
+        spVix_array.push(spVix_res_info.observations[i].value)
 
       }
 
