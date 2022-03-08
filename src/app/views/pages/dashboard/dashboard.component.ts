@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
       const response = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=PCU2122212122210&file_type=json&observation_start=1985-06-01&observation_end=2022-01-28');
       const body = await response.text();
       const info = JSON.parse(body);
-      console.log(info.observations)
 
       for(let i=0;i<info.observations.length;i++){
 
@@ -100,9 +99,6 @@ export class DashboardComponent implements OnInit {
         dates_bargraph_array.push((us_res_info.observations[i].date).substring(0,4))
 
       }
-
-      // reserves_array.push(info2.observations[info2.observations.length-1].value)
-      
 
       const response3 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGTRM052N&file_type=json&observation_end=2022-01-01');
       const body3 = await response3.text();
@@ -126,9 +122,9 @@ export class DashboardComponent implements OnInit {
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGDEM052N&file_type=json&observation_end=2022-01-01
 
-      console.log(reserves_array)
-      console.log(dates_bargraph_array)
-      console.log(turkey_reserves_array)
+      // console.log(reserves_array)
+      // console.log(turkey_reserves_array)
+      console.log(dates_bargraph_array)      
 
     };
 
@@ -137,7 +133,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, dates_bargraph_array);  
+      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, dates_bargraph_array);  
 
     }, 4000);
 
@@ -485,7 +481,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Line chart options
  */
- function getReservesChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, xArr: Array<any>) {
+ function getReservesChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, y2Arr: Array<any>, xArr: Array<any>) {
   return {
     series: [
       {
@@ -496,11 +492,10 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         name: "Turkey",
         data: y1Arr,// [12, 42, 68, 33]
       },
-      // {
-      //   name:
-      //     "Data c",
-      //   data: [8, 32, 48, 53]
-      // }
+      {
+        name: "Germany",
+        data: y2Arr, // [8, 32, 48, 53]
+      }
     ],
     chart: {
       type: "line",
