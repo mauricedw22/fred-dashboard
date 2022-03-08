@@ -161,7 +161,7 @@ export class DashboardComponent implements OnInit {
 
       // console.log(reserves_array)
       // console.log(turkey_reserves_array)
-      console.log(dates_bargraph_array)      
+      // console.log(dates_bargraph_array)      
 
     };
 
