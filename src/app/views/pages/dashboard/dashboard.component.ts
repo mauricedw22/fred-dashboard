@@ -503,7 +503,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Line chart options
  */
- function getReservesChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, y2Arr: Array<any>, y3Arr: Array<any>, xArr: Array<any>) {
+ function getReservesChartOptions(obj: any, yArr: Array<any>, y1Arr: Array<any>, y2Arr: Array<any>, y3Arr: Array<any>, y4Arr: Array<any>, xArr: Array<any>) {
   return {
     series: [
       {
@@ -524,7 +524,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
       },
       {
         name: "India",
-        data: y3Arr, // [8, 32, 48, 53]
+        data: y4Arr, // [8, 32, 48, 53]
       }
     ],
     chart: {
