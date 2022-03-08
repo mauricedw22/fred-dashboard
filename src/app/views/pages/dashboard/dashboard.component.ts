@@ -537,7 +537,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         show: false
       },
     },
-    colors: [obj.primary, obj.danger, obj.warning, obj.info],
+    colors: [obj.primary, obj.danger, obj.warning, obj.info, obj.secondary],
     grid: {
       padding: {
         bottom: -4
