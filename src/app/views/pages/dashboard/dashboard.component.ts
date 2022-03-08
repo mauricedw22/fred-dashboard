@@ -74,6 +74,7 @@ export class DashboardComponent implements OnInit {
     let turkey_reserves_array: Array<any> = [];
     let germany_reserves_array: Array<any> = [];
     let uk_reserves_array: Array<any> = [];
+    let india_reserves_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
