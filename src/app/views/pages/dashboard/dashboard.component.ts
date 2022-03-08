@@ -521,6 +521,10 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
       {
         name: "United Kingdom",
         data: y3Arr, // [8, 32, 48, 53]
+      },
+      {
+        name: "India",
+        data: y3Arr, // [8, 32, 48, 53]
       }
     ],
     chart: {
