@@ -131,6 +131,16 @@ export class DashboardComponent implements OnInit {
 
       }
 
+      const response6 = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGINM052N&file_type=json&observation_end=2022-01-01');
+      const body6 = await response6.text();
+      const india_res_info = JSON.parse(body6);
+
+      for(let i=india_res_info.observations.length-144;i<india_res_info.observations.length;i=i+12){
+
+        india_reserves_array.push(india_res_info.observations[i].value)
+
+      }
+
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGGBM052N&file_type=json&observation_end=2022-01-01
 
       // console.log(reserves_array)
