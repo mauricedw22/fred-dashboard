@@ -155,9 +155,10 @@ export class DashboardComponent implements OnInit {
       const spVix = await spVixData.text();
       const spVix_res_info = JSON.parse(spVix);
 
-      for(let i=spVix_res_info.observations.length-144;i<spVix_res_info.observations.length;i=i+12){
+      for(let i=spVix_res_info.observations.length;i<spVix_res_info.observations.length;i=i++){
 
         spVix_array.push(spVix_res_info.observations[i].value)
+        vix_dates_array.push(spVix_res_info.observations[i].date)
 
       }
 
