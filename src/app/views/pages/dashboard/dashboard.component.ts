@@ -50,6 +50,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.currentDate = this.calendar.getToday();
 
+    let todaysDate: Date = new Date();
+    let todaysDateOutput: string;
+
+    todaysDateOutput = todaysDate.toISOString().substring(0,10);
+
     // this.customersChartOptions = getCustomerseChartOptions(this.obj);
     // this.ordersChartOptions = getOrdersChartOptions(this.obj);
     // this.growthChartOptions = getGrowthChartOptions(this.obj)    
@@ -142,6 +147,16 @@ export class DashboardComponent implements OnInit {
 
       }
 
+      const spVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=VIXCLS&file_type=json&observation_end=' + todaysDateOutput);
+      const spVix = await spVixData.text();
+      const spVix_res_info = JSON.parse(spVix);
+
+      for(let i=spVix_res_info.observations.length-144;i<spVix_res_info.observations.length;i=i+12){
+
+        india_reserves_array.push(india_res_info.observations[i].value)
+
+      }
+
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGJPM052N&file_type=json&observation_end=2022-01-01
 
       // console.log(reserves_array)
@@ -155,7 +170,8 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
-      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);  
+      this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
+      // this.vixChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array)  
 
     }, 4000);
 
@@ -537,7 +553,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         show: false
       },
     },
-    colors: [obj.primary, obj.danger, obj.warning, obj.info, obj.secondary],
+    colors: [obj.primary, obj.danger, obj.warning, obj.info, '#ffffff'],
     grid: {
       padding: {
         bottom: -4
