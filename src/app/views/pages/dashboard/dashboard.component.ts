@@ -155,7 +155,7 @@ export class DashboardComponent implements OnInit {
       const spVix = await spVixData.text();
       const spVix_res_info = JSON.parse(spVix);
 
-      for(let i=spVix_res_info.observations.length-730;i<spVix_res_info.observations.length;i++){
+      for(let i=spVix_res_info.observations.length-180;i<spVix_res_info.observations.length;i++){
 
         spVix_array.push(spVix_res_info.observations[i].value)
         vix_dates_array.push(spVix_res_info.observations[i].date)
@@ -166,7 +166,7 @@ export class DashboardComponent implements OnInit {
       const russellVix = await russellVixData.text();
       const russellVix_res_info = JSON.parse(russellVix);
 
-      for(let i=russellVix_res_info.observations.length-730;i<russellVix_res_info.observations.length;i++){
+      for(let i=russellVix_res_info.observations.length-180;i<russellVix_res_info.observations.length;i++){
 
         russellVix_array.push(russellVix_res_info.observations[i].value)
         // vix_dates_array.push(russellVix_res_info.observations[i].date)
@@ -189,7 +189,7 @@ export class DashboardComponent implements OnInit {
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);  
 
-    }, 10000);
+    }, 4000);
 
    }
 
