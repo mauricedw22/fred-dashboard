@@ -208,6 +208,8 @@ export class DashboardComponent implements OnInit {
       debtGDP1_array = ausDebtGDP_array.concat(usDebtGDP_array);
       debtGDP_array = debtGDP1_array.concat(koreaDebtGDP_array);
 
+      console.log(debtGDP_array)
+
       // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
 
       //   ausDebtGDP_array.push(ausDebtGDP_res_info.observations[i].value);
