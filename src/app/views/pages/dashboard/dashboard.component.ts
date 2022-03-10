@@ -202,7 +202,8 @@ export class DashboardComponent implements OnInit {
 
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
-      this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);  
+      this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
+      this.pieChartOptions = getPieChartOptions(this.obj, ausDebtGDP_array);  
 
     }, 6000);
 
@@ -714,7 +715,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Pie chart options
  */
- function getPieChartOptions(obj: any) {
+ function getPieChartOptions(obj: any, data: any) {
   return {
     series: [44, 55, 13, 33],
     chart: {
