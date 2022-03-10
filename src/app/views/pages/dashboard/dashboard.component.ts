@@ -188,9 +188,9 @@ export class DashboardComponent implements OnInit {
       const koreaDebtGDP = await koreaGDPData.text();
       const koreaDebtGDP_res_info = JSON.parse(koreaDebtGDP);
 
-      debtGDP_array.push(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value);
-      debtGDP_array.push(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length-1].value);
-      debtGDP_array.push(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length-1].value);
+      debtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
+      debtGDP_array.push(usDebtGDP_res_info.observations[0].value);
+      debtGDP_array.push(koreaDebtGDP_res_info.observations[0].value);
 
       // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
 
@@ -738,8 +738,8 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         show: false
       },
     },
-    labels: ["Australia"],
-    colors: [obj.primary,obj.warning,obj.danger, obj.info],
+    labels: ["Australia","United States","Korea"],
+    colors: [obj.primary,obj.warning,obj.danger],
     stroke: {
       colors: ['rgba(0,0,0,0)']
     },
