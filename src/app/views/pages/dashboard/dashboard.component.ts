@@ -181,12 +181,14 @@ export class DashboardComponent implements OnInit {
       const ausDebtGDP = await ausGDPData.text();
       const ausDebtGDP_res_info = JSON.parse(ausDebtGDP);
 
-      for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
+      ausDebtGDP_array.push(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value);
 
-        ausDebtGDP_array.push(ausDebtGDP_res_info.observations[i].value);
-        gdp_dates_array.push(ausDebtGDP_res_info.observations[i].date);
+      // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
 
-      }
+      //   ausDebtGDP_array.push(ausDebtGDP_res_info.observations[i].value);
+      //   gdp_dates_array.push(ausDebtGDP_res_info.observations[i].date);
+
+      // }
 
       // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json&observation_end=2022-01-01
 
