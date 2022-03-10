@@ -189,7 +189,7 @@ export class DashboardComponent implements OnInit {
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);  
 
-    }, 7000);
+    }, 10000);
 
    }
 
