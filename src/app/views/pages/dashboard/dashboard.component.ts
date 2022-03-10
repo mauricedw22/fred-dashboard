@@ -201,9 +201,9 @@ export class DashboardComponent implements OnInit {
       console.log(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length-1].value)
       console.log(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length-1].value)
 
-      ausDebtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
-      usDebtGDP_array.push(usDebtGDP_res_info.observations[0].value);
-      koreaDebtGDP_array.push(koreaDebtGDP_res_info.observations[0].value);
+      ausDebtGDP_array.push(parseInt(ausDebtGDP_res_info.observations[0].value));
+      usDebtGDP_array.push(parseInt(usDebtGDP_res_info.observations[0].value));
+      koreaDebtGDP_array.push(parseInt(koreaDebtGDP_res_info.observations[0].value));
 
       debtGDP1_array = ausDebtGDP_array.concat(usDebtGDP_array);
       debtGDP_array = debtGDP1_array.concat(koreaDebtGDP_array);
