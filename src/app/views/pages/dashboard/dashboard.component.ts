@@ -86,7 +86,10 @@ export class DashboardComponent implements OnInit {
     let vix_dates_array: Array<any> = [];
 
     let debtGDP_array: Array<any> = [];
-    // let ausDebtGDP_array: Array<any> = [];
+    let debtGDP1_array: Array<any> = [];
+    let ausDebtGDP_array: Array<any> = [];
+    let usDebtGDP_array: Array<any> = [];
+    let koreaDebtGDP_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -188,9 +191,12 @@ export class DashboardComponent implements OnInit {
       const koreaDebtGDP = await koreaGDPData.text();
       const koreaDebtGDP_res_info = JSON.parse(koreaDebtGDP);
 
-      debtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
-      debtGDP_array.push(usDebtGDP_res_info.observations[0].value);
-      debtGDP_array.push(koreaDebtGDP_res_info.observations[0].value);
+      ausDebtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
+      usDebtGDP_array.push(usDebtGDP_res_info.observations[0].value);
+      koreaDebtGDP_array.push(koreaDebtGDP_res_info.observations[0].value);
+
+      debtGDP1_array = ausDebtGDP_array.concat(usDebtGDP_array);
+      debtGDP_array = debtGDP1_array.concat(koreaDebtGDP_array);
 
       // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
 
