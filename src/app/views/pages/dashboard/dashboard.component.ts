@@ -191,6 +191,10 @@ export class DashboardComponent implements OnInit {
       const koreaDebtGDP = await koreaGDPData.text();
       const koreaDebtGDP_res_info = JSON.parse(koreaDebtGDP);
 
+      console.log(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length].value)
+      console.log(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length].value)
+      console.log(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length].value)
+
       ausDebtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
       usDebtGDP_array.push(usDebtGDP_res_info.observations[0].value);
       koreaDebtGDP_array.push(koreaDebtGDP_res_info.observations[0].value);
