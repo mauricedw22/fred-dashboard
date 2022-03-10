@@ -179,21 +179,27 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      const ausGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json');
+      const ausGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
       const ausDebtGDP = await ausGDPData.text();
       const ausDebtGDP_res_info = JSON.parse(ausDebtGDP);
 
-      const usGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDUSQ163N&file_type=json=');
+      const usGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDUSQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
       const usDebtGDP = await usGDPData.text();
       const usDebtGDP_res_info = JSON.parse(usDebtGDP);
 
-      const koreaGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDKRQ163N&file_type=json');
+      const koreaGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDKRQ163N&file_type=json&observation_start=2021-04-01&observation_end=2021-04-01');
       const koreaDebtGDP = await koreaGDPData.text();
       const koreaDebtGDP_res_info = JSON.parse(koreaDebtGDP);
 
-      console.log(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length].value)
-      console.log(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length].value)
-      console.log(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length].value)
+      // for(let i=0;i<koreaDebtGDP_res_info.observations.length;i++){
+
+      //   // russellVix_array.push(russellVix_res_info.observations[i].value)
+
+      // }
+
+      console.log(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value)
+      console.log(usDebtGDP_res_info.observations[usDebtGDP_res_info.observations.length-1].value)
+      console.log(koreaDebtGDP_res_info.observations[koreaDebtGDP_res_info.observations.length-1].value)
 
       ausDebtGDP_array.push(ausDebtGDP_res_info.observations[0].value);
       usDebtGDP_array.push(usDebtGDP_res_info.observations[0].value);
