@@ -151,7 +151,7 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      const spVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=VIXCLS&file_type=json&observation_end=2022-03-01'); // todaysDateOutput);
+      const spVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=VIXCLS&file_type=json&observation_end=' + todaysDateOutput);
       const spVix = await spVixData.text();
       const spVix_res_info = JSON.parse(spVix);
 
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      const russellVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=RVXCLS&file_type=json&observation_end=2022-03-01');
+      const russellVixData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=RVXCLS&file_type=json&observation_end=' + todaysDateOutput);
       const russellVix = await russellVixData.text();
       const russellVix_res_info = JSON.parse(russellVix);
 
@@ -189,7 +189,7 @@ export class DashboardComponent implements OnInit {
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);  
 
-    }, 4000);
+    }, 7000);
 
    }
 
