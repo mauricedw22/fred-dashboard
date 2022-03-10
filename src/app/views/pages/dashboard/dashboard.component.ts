@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     // this.cloudStorageChartOptions = getCloudStorageChartOptions(this.obj);
 
     // this.lineChartOptions = getLineChartOptions(this.obj);
-    this.pieChartOptions = getPieChartOptions(this.obj);
+    // this.pieChartOptions = getPieChartOptions(this.obj);
     this.radarChartOptions = getRadarChartOptions(this.obj);
     
 
@@ -85,9 +85,8 @@ export class DashboardComponent implements OnInit {
     let russellVix_array: Array<any> = [];
     let vix_dates_array: Array<any> = [];
 
-    let ausDebtGDP_array: Array<any> = [];
+    let debtGDP_array: Array<any> = [];
     // let ausDebtGDP_array: Array<any> = [];
-    let gdp_dates_array: Array<any> = [];
 
     // let txn_data: Object = {};
 
@@ -181,7 +180,7 @@ export class DashboardComponent implements OnInit {
       const ausDebtGDP = await ausGDPData.text();
       const ausDebtGDP_res_info = JSON.parse(ausDebtGDP);
 
-      ausDebtGDP_array.push(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value);
+      debtGDP_array.push(ausDebtGDP_res_info.observations[ausDebtGDP_res_info.observations.length-1].value);
 
       // for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
 
@@ -205,7 +204,7 @@ export class DashboardComponent implements OnInit {
       this.goldPpiChartOptions = getGoldPpiChartOptions(this.obj, gold_array, dates_array);    
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);
-      this.pieChartOptions = getPieChartOptions(this.obj, ausDebtGDP_array);  
+      this.pieChartOptions = getPieChartOptions(this.obj, debtGDP_array);  
 
     }, 6000);
 
@@ -717,9 +716,9 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
 /**
  * Pie chart options
  */
- function getPieChartOptions(obj: any, data: any) {
+ function getPieChartOptions(obj: any, data: Array<any>) {
   return {
-    series: [44, 55, 13, 33],
+    series: data, // [44, 55, 13, 33],
     chart: {
       height: 300,
       type: "pie",
