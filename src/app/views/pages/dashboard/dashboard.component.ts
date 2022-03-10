@@ -746,7 +746,8 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
  */
  function getPieChartOptions(obj: any, data: Array<any>) {
   return {
-    series: data, // [44, 55, 13, 33],
+    series: data,
+    labels: ["Australia","United States","Korea"],
     chart: {
       height: 300,
       type: "pie",
@@ -756,7 +757,6 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         show: false
       },
     },
-    labels: ["Australia","United States","Korea"],
     colors: [obj.primary,obj.warning,obj.danger],
     stroke: {
       colors: ['rgba(0,0,0,0)']
@@ -772,7 +772,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
       },
     },
     dataLabels: {
-      enabled: false
+      enabled: true
     }
   }
 };
