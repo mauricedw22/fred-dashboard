@@ -85,6 +85,10 @@ export class DashboardComponent implements OnInit {
     let russellVix_array: Array<any> = [];
     let vix_dates_array: Array<any> = [];
 
+    let ausDebtGDP_array: Array<any> = [];
+    // let ausDebtGDP_array: Array<any> = [];
+    let gdp_dates_array: Array<any> = [];
+
     // let txn_data: Object = {};
 
     async function prepare_array() {
@@ -173,7 +177,18 @@ export class DashboardComponent implements OnInit {
 
       }
 
-      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=TRESEGJPM052N&file_type=json&observation_end=2022-01-01
+      const ausGDPData = await fetch('https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=RVXCLS&file_type=json&observation_end=' + todaysDateOutput);
+      const ausDebtGDP = await ausGDPData.text();
+      const ausDebtGDP_res_info = JSON.parse(ausDebtGDP);
+
+      for(let i=ausDebtGDP_res_info.observations.length-180;i<ausDebtGDP_res_info.observations.length;i++){
+
+        ausDebtGDP_array.push(ausDebtGDP_res_info.observations[i].value);
+        gdp_dates_array.push(ausDebtGDP_res_info.observations[i].date);
+
+      }
+
+      // https://api.stlouisfed.org/fred/series/observations?api_key=1160cbecd7a466e7d9b30234db259627&series_id=HDTGPDAUQ163N&file_type=json&observation_end=2022-01-01
 
       // console.log(spVix_array)
       // console.log(russellVix_array)
@@ -189,7 +204,7 @@ export class DashboardComponent implements OnInit {
       this.reservesChartOptions = getReservesChartOptions(this.obj, reserves_array, turkey_reserves_array, germany_reserves_array, uk_reserves_array, india_reserves_array, dates_bargraph_array);
       this.lineChartOptions = getVixChartOptions(this.obj, spVix_array, russellVix_array, vix_dates_array);  
 
-    }, 10000);
+    }, 6000);
 
    }
 
