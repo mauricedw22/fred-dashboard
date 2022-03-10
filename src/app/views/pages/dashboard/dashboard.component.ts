@@ -728,6 +728,7 @@ function getGoldPpiChartOptions(obj: any, yArr: Array<any>, xArr: Array<any>) {
         show: false
       },
     },
+    labels: ["Australia"],
     colors: [obj.primary,obj.warning,obj.danger, obj.info],
     stroke: {
       colors: ['rgba(0,0,0,0)']
